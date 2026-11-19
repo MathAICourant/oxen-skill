@@ -6,7 +6,7 @@ description: Use Oxen model APIs, run ephemeral mathematical agents with Wagon, 
 # Oxen
 
 Use the authenticated Oxen model API at `https://oxen.lemma.farm/api/v1`.
-The user obtains a 90-day service credential at `https://oxen.lemma.farm/`.
+The user obtains a 90-day API key at `https://oxen.lemma.farm/`.
 Send both headers on every API request, including WebSocket upgrades:
 
 - `CF-Access-Client-Id`: read from `CF_ACCESS_CLIENT_ID`.
@@ -16,7 +16,7 @@ For scripted clients set `User-Agent: oxen-skill/1.0`; the edge rejected the
 default Python-urllib user agent during validation. The included helper sets it.
 
 Read credentials from the user's environment or secret store. Do not print them,
-commit them, put them in URLs, or include them in result archives. No provider
+commit them, put them in URLs, or include them in result archives. No separate provider
 API key is needed. Some SDKs require a placeholder `api_key`; the Cloudflare
 headers perform authentication. Browser cookies do not replace service credentials.
 
@@ -48,6 +48,9 @@ conversation history when crossing provider adapters. Provider-specific SDK
 Wagon is the ephemeral-agent system. Yoke is the independent model-request
 batch queue described below.
 
+For Codex and Claude Code gateway configuration and automatic model discovery,
+read [references/client-config.md](references/client-config.md).
+
 ## Wagon agents
 
 For questions requiring Python, symbolic math, files or other computation, read
@@ -60,7 +63,9 @@ Chat Completions gateway. Model effort controls depend on both model and agent.
 Record CPU, RAM, disk, setup/run/model/command/cleanup timeouts, model effort,
 step/call/output/artifact limits, region, TTL and network policy in each JSONL row
 when specified. Omitted defaults are resolved and saved by the server.
-Poll for completion and return the final answer and the private artifact download
+Use the run activity endpoint for live messages, commands, output and file previews.
+Provider-returned reasoning may be shown in a collapsed spoiler; encrypted or
+redacted reasoning is unavailable. Poll for completion and return the final answer and the private artifact download
 locations. Preserve the requested model/agent/settings; report unsupported choices.
 
 ## Yoke batches

@@ -7,7 +7,7 @@ and running the agent. Users need only their existing Oxen credential. Yoke at
 Use `https://oxen.lemma.farm/api/v1/wagon` as the API root. Send the two Cloudflare
 service headers documented in SKILL.md, plus `User-Agent: oxen-skill/1.0`.
 Do not give provider or Daytona keys to clients. Outputs belong to the credential
-owner's verified email. Model calls are charged to the exact submitting token's
+owner's verified email. Model calls are charged to the exact submitting API key's
 usage ledger; browser-created runs belong to the signed-in account.
 
 ## Discovery and one question
@@ -19,6 +19,13 @@ usage ledger; browser-created runs belong to the signed-in account.
   execution. Returns `run_id`, `batch_id`, `status_url`, and batch/download URLs.
 - `GET /run/{run_id}`: status, answer in `text`, resolved request, usage,
   execution metadata, cleanup outcome and the containing batch's download URLs.
+- `GET /run/{run_id}/activity?after=0&limit=100`: paginated activity JSON. Reuse
+  the returned byte `cursor` as `after`; keep fetching while `has_more`. Events
+  include `at`, `kind`, `title`, `text`; the response also includes run state,
+  usage, final answer if available, workspace file metadata and cleanup state.
+- `GET /run/{run_id}/activity.jsonl`: download activity recorded so far.
+- `GET /run/{run_id}/files?path=calculation.py`: bounded UTF-8 preview of a
+  collected workspace file. Use paths marked `preview_available` in activity.
 - `POST /run/{run_id}/cancel`: cancel queued/running work; collect what is available
   and remove its sandbox. Provider work already accepted can still be billed.
 
@@ -31,7 +38,7 @@ The enabled agents are:
 | `claude-code` | Claude models | Anthropic Messages |
 
 Codex 0.170.0 and Claude Code 2.1.318 were tested with real SymPy computations,
-code/answer artifacts, per-token accounting and sandbox deletion. The catalog
+code/answer artifacts, per-key accounting and sandbox deletion. The catalog
 reports enabled choices and the native runtime versions/checksums; consult it
 rather than assuming all upstream agents are installed. Codex runtime bundles
 include its code-mode host and companion files, not only the main executable.
@@ -81,6 +88,25 @@ print(run.get("text", ""))
 # Inspect run["state"], run.get("error"), and run.get("cleanup") as well.
 # run["batch"]["urls"] contains results and ZIP snapshot preparation routes.
 ```
+
+## Live activity
+
+The web Activity view polls about every two seconds. Commands, completed tool
+output, assistant messages and small text file previews appear as available.
+Provider-returned reasoning or summaries are displayed in collapsed spoilers.
+Encrypted/redacted reasoning is never decoded or reconstructed. Native model
+responses are buffered per call, so this is not a token-by-token stream. Activity
+is saved after completion and included in the artifact ZIP.
+
+Live previews include up to 12 small text/code files (64 KiB each), from a
+workspace listing capped at 200 files and two directory levels. Final artifacts
+remain in the ZIP. The activity log is capped at 16 MiB and reports `truncated`
+when that cap is reached. Every activity/preview/download route checks ownership.
+
+`timeouts.run_seconds` is the **maximum agent execution time**, not a delay.
+Agents stop earlier when finished. Setup, model-call, auxiliary-command and
+cleanup deadlines are separate. A JSONL row’s `timeouts.run_seconds` overrides
+the batch runtime setting.
 
 ## JSONL batch format
 
