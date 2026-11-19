@@ -108,6 +108,57 @@ print(run.get("text", ""))
 # run["batch"]["urls"] contains results and ZIP snapshot preparation routes.
 ```
 
+## Input files without sandbox internet
+
+Set `download_urls` to an array of public HTTP(S) file URLs. Oxen downloads the
+files on the server when the run starts, then copies them into the fresh sandbox
+under `/workspace/inputs/`. The agent receives the file paths in its instructions.
+This works with the default `network.mode: "none"`; it does not grant internet
+access to the sandbox. Available through `POST /run`, every Wagon JSONL row, and
+the browser's **Download URLs** field (one URL per line).
+
+```json
+{
+  "question": "Inspect the paper provided in /workspace/inputs/ and save your notes.",
+  "agent": "codex",
+  "model": "gpt-6.2-sol",
+  "download_urls": ["https://arxiv.org/pdf/1706.03762"],
+  "network": {"mode": "none"}
+}
+```
+
+Use the repeatable CLI flag for multiple files:
+
+```bash
+python3 scripts/oxen_wagon.py "Inspect the supplied paper and abstract" --agent codex --download-url https://arxiv.org/pdf/1706.03762 --download-url https://arxiv.org/abs/1706.03762
+```
+
+Names have a numeric prefix, for example `001-1706.03762.pdf`; each input has a
+distinct name. `/workspace/inputs/manifest.json` maps original/final URLs to paths,
+byte sizes, content types, download timestamps and SHA-256 hashes. The run status
+includes `download_manifest`; the artifact ZIP preserves the original downloads
+and manifest, as well as any files the agent changes. URLs can serve different
+bytes over time, so compare the saved hashes when reproducing a run.
+
+Limits: up to 10 distinct URLs, 64 MiB per file and 128 MiB combined; the combined
+size is also bounded by `limits.max_artifact_bytes`. Each file has at most 60
+seconds, within the run's setup budget. Increase `timeouts.setup_seconds` for
+several slow inputs. Redirects are followed up to five times. Only public
+destinations on ports 80/443 are accepted; credentials in URLs, private/internal
+addresses and redirects to them are rejected. No Oxen/provider credentials are
+sent to download sites. Use public URLs without embedded secrets. Archives are
+copied as files and are not automatically extracted; PDF-reading packages are
+not guaranteed to be present in the software preset.
+
+Validation checks URL syntax without fetching anything. Downloads occur only
+after submission; any failed download fails the run before the agent starts.
+Completed inputs remain downloadable in a ZIP snapshot if a later input fails.
+The agent cannot fetch arbitrary new URLs mid-run with this setting.
+
+Daytona currently rejects custom internet policies on the configured accounts;
+`network.mode: "public"`/`"allowlist"` require an account tier that supports them.
+Use `download_urls` with `network.mode: "none"` for pre-supplied web files.
+
 ## Live activity
 
 The web Activity view polls about every two seconds. The selected run is saved
@@ -161,6 +212,7 @@ explicit defaults, saved as request JSON for each row. No credentials go in JSON
 | `schema_version` | `1`; reject unknown versions. |
 | `custom_id` | Optional user identifier, up to 512 characters. |
 | `question` | Required task text, up to 1,000,000 characters. |
+| `download_urls` | `[]`; up to 10 public HTTP(S) URLs fetched before execution and copied into `/workspace/inputs/`. See input-file limits and manifest above. |
 | `agent` | `terminus-2`; must be enabled in `/catalog`. |
 | `model` | `gpt-6.2-sol`, or `claude-sonnet-4-6` when `agent` is `claude-code`; must be in the live Oxen model catalog. |
 | `reasoning_effort` | Omitted means model default. Values depend on model: `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, `max`. Consult [models](models.md). |

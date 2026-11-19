@@ -68,6 +68,9 @@ For questions requiring Python, symbolic math, files or other computation, read
 [JSONL request schema](references/agent-request.schema.json).
 Use `/api/v1/wagon/run` for one question, or `/api/v1/wagon/batch` for a JSONL file.
 Check `/api/v1/wagon/catalog` for enabled agents and software environments.
+Use `download_urls: ["https://…"]` to stage public web files in the fresh sandbox's
+`/workspace/inputs/` before execution while keeping sandbox internet disabled.
+See the agent reference for input limits, saved hashes and the repeatable CLI flag.
 Codex uses OpenAI models; Claude Code uses Claude models; Terminus-2 uses the
 Chat Completions gateway. Model effort controls depend on both model and agent.
 Record CPU, RAM, disk, setup/run/model/command/cleanup timeouts, model effort,
