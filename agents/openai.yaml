@@ -1,0 +1,4 @@
+interface:
+  display_name: "Oxen API"
+  short_description: "Run private model batches and retrieve partial results from Oxen"
+  default_prompt: "Use $oxen-skill to validate and run my JSONL requests through Oxen."
