@@ -15,6 +15,10 @@ usage ledger; browser-created runs belong to the signed-in account.
 - `GET /catalog`: approved software environments, pinned snapshot/source hashes,
   available agents, worker and provider-call limits. Treat this as authoritative.
 - `GET /schema`: the versioned request JSON Schema.
+- `GET /runs?offset=0&limit=50`: your individual questions, separately from
+  uploaded JSONL batches. Returns `runs`, `total`, `offset`, `limit`; each run
+  includes its ID, question preview, agent/model, state, timestamps, activity
+  URL and a browser `page_url`. The maximum page size is 100.
 - `POST /run`: one question plus settings; validates before immediately queuing
   execution. Returns `run_id`, `batch_id`, `status_url`, and batch/download URLs.
 - `GET /run/{run_id}`: status, answer in `text`, resolved request, usage,
@@ -28,6 +32,14 @@ usage ledger; browser-created runs belong to the signed-in account.
   collected workspace file. Use paths marked `preview_available` in activity.
 - `POST /run/{run_id}/cancel`: cancel queued/running work; collect what is available
   and remove its sandbox. Provider work already accepted can still be billed.
+
+Single-question submissions are persisted with `kind: "single"`; intentional
+JSONL uploads have `kind: "batch"`, even for a one-line file. `/batch` lists only
+uploaded batches; `/runs` lists individual questions. Existing single questions
+are migrated into that collection without rerunning them or changing saved files.
+The `batch_id` and download URLs on a single-run response are retained for API
+compatibility and artifact preparation; they do not make it appear in the batch
+list.
 
 The enabled agents are:
 
@@ -91,7 +103,11 @@ print(run.get("text", ""))
 
 ## Live activity
 
-The web Activity view polls about every two seconds. Commands, completed tool
+The web Activity view polls about every two seconds. The selected run is saved
+in the page URL (`/wagon?run=RUN_ID`) and restored after reload. Scrolling up
+pauses following; recheck **Follow latest output** to resume. Terminal control
+codes are removed in the display while Unicode is preserved; original terminal
+logs remain in the artifact ZIP. Commands, completed tool
 output, assistant messages and small text file previews appear as available.
 Provider-returned reasoning or summaries are displayed in collapsed spoilers.
 Encrypted/redacted reasoning is never decoded or reconstructed. Native model
