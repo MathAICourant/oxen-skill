@@ -22,10 +22,25 @@ usage ledger; browser-created runs belong to the signed-in account.
 - `POST /run/{run_id}/cancel`: cancel queued/running work; collect what is available
   and remove its sandbox. Provider work already accepted can still be billed.
 
-The first enabled agent is `terminus-2`, a Harbor terminal agent supporting the
-Oxen Chat Completions gateway. Codex and Claude Code integrations exist in Harbor,
-but are not yet enabled in Wagon. Do not substitute one when a user requested
-another. Check the live catalog before selecting an agent or environment.
+The enabled agents are:
+
+| Agent | Models | Model API |
+| --- | --- | --- |
+| `terminus-2` | Oxen text models | Chat Completions |
+| `codex` | OpenAI models | Responses |
+| `claude-code` | Claude models | Anthropic Messages |
+
+Codex 0.170.0 and Claude Code 2.1.318 were tested with real SymPy computations,
+code/answer artifacts, per-token accounting and sandbox deletion. The catalog
+reports enabled choices and the native runtime versions/checksums; consult it
+rather than assuming all upstream agents are installed. Codex runtime bundles
+include its code-mode host and companion files, not only the main executable.
+
+Native agents use a credential-free localhost endpoint inside the sandbox. A
+host worker forwards those requests over Daytona's authenticated control channel
+to the metered Oxen gateway. Provider credentials, Daytona keys and the user's
+Cloudflare secret are not installed in the sandbox. Native streaming responses
+are currently buffered per model call before being delivered to the CLI.
 
 The initial `math-python-v1` environment has Python 3.12.13, SymPy, mpmath, NumPy,
 SciPy, matplotlib, pandas, NetworkX, Git, ripgrep, curl, tmux, SQLite and C/C++ build
@@ -74,6 +89,8 @@ For one question, the standard-library CLI waits and returns `text_output` and
 
 ```bash
 python3 scripts/oxen_wagon.py "Integrate x**4 from 0 to 1 with SymPy" --model deepseek-4.1 --effort none --cpu 2 --memory-gib 4 --max-runtime 600
+python3 scripts/oxen_wagon.py "Check the integral with SymPy" --agent codex --model gpt-6.2-sol --effort low
+python3 scripts/oxen_wagon.py "Check the integral with SymPy" --agent claude-code --model claude-sonnet-4-6 --effort low
 ```
 
 Use `--question-file` to read the positional argument as a text file, `--no-wait`
@@ -96,7 +113,7 @@ explicit defaults, saved as request JSON for each row. No credentials go in JSON
 | `custom_id` | Optional user identifier, up to 512 characters. |
 | `question` | Required task text, up to 1,000,000 characters. |
 | `agent` | `terminus-2`; must be enabled in `/catalog`. |
-| `model` | `gpt-6.2-sol`; must be in the live Oxen model catalog. |
+| `model` | `gpt-6.2-sol`, or `claude-sonnet-4-6` when `agent` is `claude-code`; must be in the live Oxen model catalog. |
 | `reasoning_effort` | Omitted means model default. Values depend on model: `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, `max`. Consult [models](models.md). |
 | `environment` | `math-python-v1`; approved versioned preset from `/catalog`. |
 | `resources.cpu` | `2` virtual CPUs; integer 1–8, subject to account/provider limits. |
@@ -105,9 +122,9 @@ explicit defaults, saved as request JSON for each row. No credentials go in JSON
 | `timeouts.setup_seconds` | `300` seconds for each of sandbox creation and agent setup; 30–1200. |
 | `timeouts.run_seconds` | `600` seconds for agent execution, including model calls and computation; 10–86400. Batch `timeout_seconds` supplies this default when the row omits it. |
 | `timeouts.llm_seconds` | `180` seconds for each model request after acquiring a provider slot; 10–1200. |
-| `timeouts.command_seconds` | `60` seconds for an individual sandbox exec RPC; 1–600. Processes started in the persistent terminal can continue beyond an RPC; the run deadline bounds the whole sandbox. |
+| `timeouts.command_seconds` | `60` seconds for an individual sandbox exec RPC; 1–600. Processes started in the persistent terminal can continue beyond an RPC; the run deadline bounds the whole sandbox. A native CLI invocation itself uses the agent run deadline. |
 | `timeouts.cleanup_seconds` | `60` seconds of cleanup grace; 15–300. A separately bounded reaper can run afterward. |
-| `limits.max_steps` | `40` agent turns; 1–1000. |
+| `limits.max_steps` | `40` agent turns; 1–1000. Claude Code uses its native turn limit; Codex conservatively caps model HTTP requests, including retries. |
 | `limits.max_model_calls` | `80` HTTP attempts, including retries/summarization; 1–2000. |
 | `limits.max_output_tokens` | `8192` requested output tokens per call; 64–131072 and model-specific limits also apply. |
 | `limits.max_artifact_bytes` | `268435456` (256 MiB) for one saved workspace export; 1 MiB–1 GiB. |

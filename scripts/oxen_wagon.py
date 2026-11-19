@@ -14,12 +14,15 @@ from oxen_batch import Client, main as batch_main
 def main():
     # The complete chunked JSONL workflow also remains available here.
     if len(sys.argv) > 1 and sys.argv[1] in ("validate", "submit", "status", "requests", "cancel", "download"):
-        return batch_main(["--base", "https://oxen.lemma.farm/api/v1/wagon/batch", *sys.argv[1:]])
+        arguments = list(sys.argv[1:])
+        if arguments[0] == "validate" and not any(a.startswith("--timeout-seconds") for a in arguments):
+            arguments.extend(["--timeout-seconds", "600"])
+        return batch_main(["--base", "https://oxen.lemma.farm/api/v1/wagon/batch", *arguments])
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("question", help="Question text; use --question-file for a file")
     parser.add_argument("--question-file", action="store_true", help="Read the positional argument as a UTF-8 file")
     parser.add_argument("--base", default="https://oxen.lemma.farm/api/v1/wagon")
-    parser.add_argument("--model", default="gpt-6.2-sol")
+    parser.add_argument("--model", help="Defaults to gpt-6.2-sol, or claude-sonnet-4-6 for Claude Code")
     parser.add_argument("--agent", default="terminus-2")
     parser.add_argument("--environment", default="math-python-v1")
     parser.add_argument("--effort")
@@ -41,7 +44,7 @@ def main():
         client = Client(args.base)
         request = {
             "question": Path(args.question).read_text() if args.question_file else args.question,
-            "model": args.model, "agent": args.agent, "environment": args.environment,
+            "model": args.model or ("claude-sonnet-4-6" if args.agent == "claude-code" else "gpt-6.2-sol"), "agent": args.agent, "environment": args.environment,
             "timeouts": {"run_seconds": args.max_runtime, "setup_seconds": args.setup_timeout},
             "network": {"mode": args.network, "allowed_hosts": args.allow_host},
         }

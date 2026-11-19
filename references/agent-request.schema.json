@@ -35,7 +35,8 @@
       "type": "string",
       "minLength": 1,
       "maxLength": 200,
-      "default": "gpt-6.2-sol"
+      "default": "gpt-6.2-sol",
+      "description": "Registered model ID. Defaults to gpt-6.2-sol, or claude-sonnet-4-6 for claude-code. Native agents require compatible provider models."
     },
     "reasoning_effort": {
       "enum": [
@@ -113,7 +114,7 @@
           "minimum": 1,
           "maximum": 600,
           "default": 60,
-          "description": "Maximum duration for one sandbox execution request."
+          "description": "Budget for an auxiliary sandbox execution RPC. The native Codex/Claude Code process itself uses run_seconds."
         },
         "cleanup_seconds": {
           "type": "integer",
@@ -134,7 +135,7 @@
           "minimum": 1,
           "maximum": 1000,
           "default": 40,
-          "description": "Maximum agent turns."
+          "description": "Maximum agent turns. Codex conservatively counts model HTTP requests, including retries."
         },
         "max_model_calls": {
           "type": "integer",
