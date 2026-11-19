@@ -1,0 +1,251 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/MathAICourant/oxen-skill/main/references/agent-request.schema.json",
+  "title": "Oxen Wagon agent request, version 1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "question"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "default": 1
+    },
+    "custom_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512
+    },
+    "question": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1000000
+    },
+    "agent": {
+      "enum": [
+        "terminus-2",
+        "codex",
+        "claude-code"
+      ],
+      "default": "terminus-2",
+      "description": "Subject to the live enabled-agent catalog; not every agent supports every model."
+    },
+    "model": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "default": "gpt-6.2-sol"
+    },
+    "reasoning_effort": {
+      "enum": [
+        "none",
+        "minimal",
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "description": "Omit to retain the model default. Availability depends on model and agent."
+    },
+    "environment": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]{0,79}$",
+      "default": "math-python-v1",
+      "description": "Approved, versioned Oxen software preset; no user Dockerfiles or host mounts."
+    },
+    "resources": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "cpu": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 8,
+          "default": 2,
+          "description": "Daytona virtual CPUs."
+        },
+        "memory_gib": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 32,
+          "default": 4,
+          "description": "RAM in GiB."
+        },
+        "disk_gib": {
+          "type": "integer",
+          "minimum": 10,
+          "maximum": 100,
+          "default": 10,
+          "description": "Ephemeral disk in GiB; includes the base image."
+        }
+      },
+      "default": {}
+    },
+    "timeouts": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "setup_seconds": {
+          "type": "integer",
+          "minimum": 30,
+          "maximum": 1200,
+          "default": 300,
+          "description": "Budget for each of sandbox creation and agent installation."
+        },
+        "run_seconds": {
+          "type": "integer",
+          "minimum": 10,
+          "maximum": 86400,
+          "default": 600,
+          "description": "Agent execution budget, including its model calls and computations."
+        },
+        "llm_seconds": {
+          "type": "integer",
+          "minimum": 10,
+          "maximum": 1200,
+          "default": 180,
+          "description": "Budget for one model API call, after a provider slot is available."
+        },
+        "command_seconds": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 600,
+          "default": 60,
+          "description": "Maximum duration for one sandbox execution request."
+        },
+        "cleanup_seconds": {
+          "type": "integer",
+          "minimum": 15,
+          "maximum": 300,
+          "default": 60,
+          "description": "Grace period for collecting artifacts and deleting the sandbox."
+        }
+      },
+      "default": {}
+    },
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "max_steps": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000,
+          "default": 40,
+          "description": "Maximum agent turns."
+        },
+        "max_model_calls": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2000,
+          "default": 80,
+          "description": "Maximum model HTTP attempts, including summarization and retries."
+        },
+        "max_output_tokens": {
+          "type": "integer",
+          "minimum": 64,
+          "maximum": 131072,
+          "default": 8192,
+          "description": "Maximum output tokens requested per model call; model limits also apply."
+        },
+        "max_artifact_bytes": {
+          "type": "integer",
+          "minimum": 1048576,
+          "maximum": 1073741824,
+          "default": 268435456,
+          "description": "Maximum saved sandbox workspace artifact bytes."
+        }
+      },
+      "default": {}
+    },
+    "daytona": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "region": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}$",
+          "description": "Daytona target/region; omitted means server/account default."
+        },
+        "auto_stop_minutes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 60,
+          "default": 5,
+          "description": "Inactivity safety net. Harbor keeps active jobs alive."
+        },
+        "auto_delete_minutes": {
+          "const": 0,
+          "default": 0,
+          "description": "Delete immediately on stopping; workspaces are never reused."
+        },
+        "ttl_minutes": {
+          "type": "integer",
+          "minimum": 5,
+          "maximum": 1600,
+          "description": "Safety net, at least ceil((2*setup_seconds + run_seconds + cleanup_seconds + 60)/60), minimum 5. Calculated when omitted."
+        }
+      },
+      "default": {}
+    },
+    "network": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "enum": [
+            "none",
+            "public",
+            "allowlist"
+          ],
+          "default": "none"
+        },
+        "allowed_hosts": {
+          "type": "array",
+          "uniqueItems": true,
+          "maxItems": 100,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 253
+          },
+          "default": [],
+          "description": "Hostnames or IP CIDRs, required only with allowlist. Provider capability is checked; no permissive fallback."
+        }
+      },
+      "default": {}
+    },
+    "model_parameters": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "temperature": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 2
+        },
+        "top_p": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        },
+        "seed": {
+          "type": "integer"
+        },
+        "frequency_penalty": {
+          "type": "number",
+          "minimum": -2,
+          "maximum": 2
+        },
+        "presence_penalty": {
+          "type": "number",
+          "minimum": -2,
+          "maximum": 2
+        }
+      },
+      "default": {}
+    }
+  }
+}

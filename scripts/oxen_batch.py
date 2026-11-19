@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Standard-library Oxen/Wagon client. Credentials come only from environment."""
+"""Standard-library Oxen/Yoke client. Credentials come only from environment."""
 
 from __future__ import annotations
 

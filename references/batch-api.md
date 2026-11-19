@@ -1,4 +1,4 @@
-# Wagon batch API
+# Yoke batch API
 
 Base: `https://oxen.lemma.farm/api/v1/batch`. Authenticate every call with
 `CF-Access-Client-Id` and `CF-Access-Client-Secret`. Scripted clients should also
@@ -39,7 +39,7 @@ the edge). All JSON mutations use
 Supported default endpoints: `/v1/chat/completions`, `/v1/responses`,
 `/v1/messages`, `/v1/completions`. Only POST text requests are supported.
 Image/video/audio generation, arbitrary URLs and WebSocket requests are not
-Wagon input formats. Use `stream:true` in a request body to preserve SSE events.
+Yoke input formats. Use `stream:true` in a request body to preserve SSE events.
 
 Complete request objects, one per physical line:
 

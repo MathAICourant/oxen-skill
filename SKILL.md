@@ -1,6 +1,6 @@
 ---
 name: oxen-skill
-description: Send model requests through Oxen, choose model-specific parameters, validate and submit JSONL batches to Wagon, monitor progress, cancel requests, and retrieve full or partial results.
+description: Use Oxen model APIs, run ephemeral mathematical agents with Wagon, choose software/resource/runtime settings, validate JSONL batches with Yoke or Wagon, and retrieve private answers and artifacts.
 ---
 
 # Oxen
@@ -45,9 +45,25 @@ silently substitute a different model. Use stateless requests with explicit
 conversation history when crossing provider adapters. Provider-specific SDK
 `extra_body` fields become top-level HTTP JSON keys.
 
-## Wagon batches
+Wagon is the ephemeral-agent system. Yoke is the independent model-request
+batch queue described below.
 
-The web UI is `https://oxen.lemma.farm/wagon`. The service API is
+## Wagon agents
+
+For questions requiring Python, symbolic math, files or other computation, read
+[references/agent-api.md](references/agent-api.md) and the versioned
+[JSONL request schema](references/agent-request.schema.json).
+Use `/api/v1/wagon/run` for one question, or `/api/v1/wagon/batch` for a JSONL file.
+Check `/api/v1/wagon/catalog` for enabled agents and software environments.
+Record CPU, RAM, disk, setup/run/model/command/cleanup timeouts, model effort,
+step/call/output/artifact limits, region, TTL and network policy in each JSONL row
+when specified. Omitted defaults are resolved and saved by the server.
+Poll for completion and return the final answer and the private artifact download
+locations. Preserve the requested model/agent/settings; report unsupported choices.
+
+## Yoke batches
+
+The web UI is `https://oxen.lemma.farm/yoke`. The service API is
 `https://oxen.lemma.farm/api/v1/batch`. Batches and downloads are private to the
 credential owner's verified email. This skill repository is public; do not put
 user inputs or outputs in it.
@@ -72,7 +88,7 @@ If asked only to validate, stop at `ready` and report the `batch_id` and any err
 If the user has requested execution, submit after successful validation without
 inventing an additional confirmation step. Never submit an invalid batch.
 
-Wagon shares a maximum of 15 active requests per provider across all batches.
+Yoke shares a maximum of 15 active requests per provider across all batches.
 OpenRouter models share one provider pool; Flatiron models share another.
 Each request is independent; file order does not create a conversation or pass
 one answer into another request.
