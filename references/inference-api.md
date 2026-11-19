@@ -84,6 +84,17 @@ GLM 5.3 declares low/high/max and always reasons. DeepSeek 4.1 declares
 none/low/high/max through this gateway. Flatiron/vLLM model effort levels are
 unverified when the capability entry has no levels; omit the field then.
 
+`k2-horizon` uses IFM K2 Horizon; `high` is its only effective effort. Prefer
+Chat Completions for provider-native controls. See [models.md](models.md) for
+required reasoning replay and recommended sampling defaults. Wagon supports it
+with Terminus-2.
+
+HTTP inference responses include `X-Oxen-Usage-Id`; retain it when reporting an
+issue so operators can correlate the call with private central gateway logs and
+the usage ledger. WebSocket handshakes have `X-Oxen-Connection-Id`. These IDs
+do not grant access to another user's logs or artifacts. Gateway content logs
+rotate; use saved Yoke/Wagon requests for durable research outputs.
+
 ## Python examples
 
 Install `openai` for the first example. Replace the two placeholders with the

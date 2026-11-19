@@ -912,6 +912,56 @@
       "modifier_note": "Flatiron runs vLLM behind LiteLLM. Use the vLLM API/sampling references plus the model card; LiteLLM and Oxen must also forward a field for it to take effect. Its model list does not publish deployment-specific parameter support."
     },
     {
+      "id": "k2-horizon",
+      "provider": "ifm",
+      "endpoints": [
+        "responses",
+        "chat",
+        "messages",
+        "completions"
+      ],
+      "efforts": [
+        "high"
+      ],
+      "disable_allowed": false,
+      "notes": "IFM/K2-Horizon-375B-A23B, text-only. High is the only effective reasoning effort; low/medium are internal settings with no documented behavior change. Preserve returned reasoning_content verbatim when replaying assistant/tool turns. Availability and quotas depend on the IFM key.",
+      "references": [
+        {
+          "label": "All IFM Chat parameters",
+          "url": "https://docs.ifm.ai/docs/chat-completions.md"
+        },
+        {
+          "label": "IFM reasoning controls",
+          "url": "https://docs.ifm.ai/docs/reasoning.md"
+        },
+        {
+          "label": "Multi-turn and reasoning replay",
+          "url": "https://docs.ifm.ai/docs/multi-turn.md"
+        },
+        {
+          "label": "IFM quotas and rate-limit headers",
+          "url": "https://docs.ifm.ai/docs/limits.md"
+        }
+      ],
+      "reported_parameters": [
+        "temperature",
+        "top_p",
+        "top_k",
+        "max_tokens",
+        "stop",
+        "seed",
+        "stream",
+        "tools",
+        "tool_choice",
+        "chat_template_kwargs",
+        "reasoning_effort",
+        "response_format"
+      ],
+      "modifier_note": "IFM advertises 512K context. Recommended temperature=1.0, top_p=0.95, chat_template_kwargs.reasoning_effort=high (Oxen supplies these defaults when omitted). Chat Completions is the native endpoint; Responses and Messages are gateway translations. frequency_penalty is accepted but ineffective; logprobs is not returned. Reasoning is shown only when returned by the provider. The daily allowance is account-specific: inspect IFM quota headers/platform; 429 and Retry-After indicate throttling.",
+      "limits_source": "IFM documentation, reviewed 2026-11-19; actual key quotas can differ from published defaults",
+      "reasoning_replay_required": true
+    },
+    {
       "id": "codex-auto-review",
       "provider": "openai",
       "endpoints": [
@@ -1666,8 +1716,8 @@
     }
   ],
   "gateway_version": "8.0.77",
-  "reviewed": "2026-11-18",
-  "captured_at": "2026-11-19T03:25:24.429222+00:00",
+  "reviewed": "2026-11-19",
+  "captured_at": "2026-11-19T17:51:18.767494+00:00",
   "source": "GET https://oxen.lemma.farm/api/v1/capabilities",
   "note": "Public dated snapshot. Query the authenticated capability API for current model availability and settings; no browser login is needed."
 }

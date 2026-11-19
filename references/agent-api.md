@@ -54,6 +54,10 @@ The enabled agents are:
 | `codex` | OpenAI models | Responses |
 | `claude-code` | Claude models | Anthropic Messages |
 
+IFM's `k2-horizon` is available with Terminus-2 and `reasoning_effort: "high"`.
+Wagon preserves the provider-returned reasoning fields required for IFM history
+replay, including an empty returned trace; it does not generate missing reasoning.
+
 Codex 0.170.0 and Claude Code 2.1.318 were tested with real SymPy computations,
 code/answer artifacts, per-key accounting and sandbox deletion. Claude Code effort choices are low/medium/high/xhigh/max where supported by the
 selected model; none/minimal are not native Claude Code effort settings.

@@ -61,6 +61,31 @@ Parameters below are advertised by OpenRouter for this exact model. Some entries
 - [All OpenRouter parameters](https://openrouter.ai/docs/api_reference/parameters)
 - [Native DeepSeek parameter reference](https://api-docs.deepseek.com/api/create-chat-completion/)
 
+## k2-horizon
+
+IFM's `IFM/K2-Horizon-375B-A23B`, text-only. Use `high`, the only effective
+reasoning effort. Oxen supplies recommended defaults `temperature=1.0`,
+`top_p=0.95`, `chat_template_kwargs.reasoning_effort="high"` when omitted.
+The native endpoint is Chat Completions; Responses and Messages are translated.
+
+IFM requires replaying each returned assistant `reasoning_content` verbatim,
+including an empty string. The gateway can return its documented mirror
+`reasoning`; preserve that too, or copy its exact value to `reasoning_content`.
+Do not reconstruct reasoning when it is absent. Wagon's Terminus-2 path preserves
+returned fields automatically. Native Codex/Claude Code model restrictions still
+apply. Streaming, Messages, tool replay and a real offline SymPy agent run were
+verified through Oxen on 2026-11-19.
+
+IFM advertises 512K context. Quotas are key-specific and the platform may throttle
+requests; inspect `429`, `Retry-After` and quota headers rather than assuming the
+published daily default applies to every key. `frequency_penalty` has no effect
+and `logprobs` is not returned.
+
+- [All IFM Chat parameters](https://docs.ifm.ai/docs/chat-completions.md)
+- [Reasoning controls](https://docs.ifm.ai/docs/reasoning.md)
+- [Multi-turn reasoning replay](https://docs.ifm.ai/docs/multi-turn.md)
+- [Limits and rate-limit headers](https://docs.ifm.ai/docs/limits.md)
+
 ## kimi-k3
 
 Reasoning efforts: not verified; omit effort.
