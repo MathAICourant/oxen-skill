@@ -20,9 +20,13 @@ commit them, put them in URLs, or include them in result archives. No separate p
 API key is needed. Some SDKs require a placeholder `api_key`; the Cloudflare
 headers perform authentication. Browser cookies do not replace service credentials.
 
-For a public model reference without browser login, read
-[references/models.md](references/models.md) for common aliases and their primary
-parameter documentation.
+This public repository is the agent-facing documentation. No browser login or
+access to the protected website is needed. Only API calls require the two
+service credentials. For complete authentication, endpoint, reasoning, modifier
+and error-handling instructions, read [references/inference-api.md](references/inference-api.md).
+[references/models.md](references/models.md) covers common aliases;
+[references/model-capabilities.json](references/model-capabilities.json) is a
+dated snapshot of the full catalog.
 
 The [homepage](https://oxen.lemma.farm/) links to API keys, Yoke, Wagon and this skill.
 Both Yoke and Wagon use **Direct requests** and **Batches** tabs with separate
@@ -31,10 +35,11 @@ histories. For a durable single model request through Yoke, read
 
 ## Single model requests
 
-Consult the signed-in [Oxen docs](https://oxen.lemma.farm/docs) for the current
-model catalog and each model's **Parameters & limits** references. Request
-`GET /models` with the service headers for the current registered IDs. A model
-being listed does not guarantee its upstream is available.
+Request `GET /capabilities` with the service headers for current registered
+model IDs, effort choices, context/output limits and public parameter references.
+`GET /models` returns the simpler OpenAI-compatible ID catalog. The public
+capabilities snapshot is an offline fallback; a registered model is not a
+guarantee of upstream availability.
 
 - Responses: `POST /responses`, set `reasoning: {"effort":"high"}`; SSE uses
   `stream:true`. WebSocket mode uses `wss://oxen.lemma.farm/api/v1/responses`,
@@ -100,7 +105,8 @@ If asked only to validate, stop at `ready` and report the `batch_id` and any err
 If the user has requested execution, submit after successful validation without
 inventing an additional confirmation step. Never submit an invalid batch.
 
-Yoke shares a maximum of 15 active requests per provider across all batches.
+Wagon allows up to 15 active agent sandboxes. Yoke direct requests, Yoke batches
+and Wagon model calls share 15 concurrent model-call slots per provider.
 OpenRouter models share one provider pool; Flatiron models share another.
 Each request is independent; file order does not create a conversation or pass
 one answer into another request.

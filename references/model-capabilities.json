@@ -1,0 +1,1673 @@
+{
+  "models": [
+    {
+      "id": "claude-3-5-haiku-20241022",
+      "provider": "anthropic",
+      "endpoints": [
+        "responses",
+        "chat",
+        "messages",
+        "completions"
+      ],
+      "efforts": [],
+      "budget_min": null,
+      "budget_max": null,
+      "disable_allowed": false,
+      "adaptive": false,
+      "notes": "Gateway registry declaration; provider availability and account limits still apply.",
+      "references": [
+        {
+          "label": "All Messages parameters",
+          "url": "https://platform.claude.com/docs/en/api/messages/create"
+        },
+        {
+          "label": "Claude model specs",
+          "url": "https://platform.claude.com/docs/en/models/overview"
+        },
+        {
+          "label": "Thinking & effort",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/effort"
+        }
+      ],
+      "modifier_note": "Use max_tokens, stream, tools/tool_choice and thinking/output_config for Messages. Sampling controls vary by Claude model and thinking mode; consult its model specs.",
+      "context_tokens": 128000,
+      "max_output_tokens": 8192,
+      "limits_source": "Pinned gateway registry, not a guaranteed account entitlement"
+    },
+    {
+      "id": "claude-3-7-sonnet-20250219",
+      "provider": "anthropic",
+      "endpoints": [
+        "responses",
+        "chat",
+        "messages",
+        "completions"
+      ],
+      "efforts": [],
+      "budget_min": 1024,
+      "budget_max": 128000,
+      "disable_allowed": false,
+      "adaptive": false,
+      "notes": "Gateway registry declaration; provider availability and account limits still apply.",
+      "references": [
+        {
+          "label": "All Messages parameters",
+          "url": "https://platform.claude.com/docs/en/api/messages/create"
+        },
+        {
+          "label": "Claude model specs",
+          "url": "https://platform.claude.com/docs/en/models/overview"
+        },
+        {
+          "label": "Thinking & effort",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/effort"
+        }
+      ],
+      "modifier_note": "Use max_tokens, stream, tools/tool_choice and thinking/output_config for Messages. Sampling controls vary by Claude model and thinking mode; consult its model specs.",
+      "context_tokens": 128000,
+      "max_output_tokens": 8192,
+      "limits_source": "Pinned gateway registry, not a guaranteed account entitlement"
+    },
+    {
+      "id": "claude-fable-5",
+      "provider": "anthropic",
+      "endpoints": [
+        "responses",
+        "chat",
+        "messages",
+        "completions"
+      ],
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "budget_min": null,
+      "budget_max": null,
+      "disable_allowed": false,
+      "adaptive": true,
+      "notes": "Gateway registry declaration; provider availability and account limits still apply.",
+      "references": [
+        {
+          "label": "All Messages parameters",
+          "url": "https://platform.claude.com/docs/en/api/messages/create"
+        },
+        {
+          "label": "Claude model specs",
+          "url": "https://platform.claude.com/docs/en/models/overview"
+        },
+        {
+          "label": "Thinking & effort",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/effort"
+        }
+      ],
+      "modifier_note": "Use max_tokens, stream, tools/tool_choice and thinking/output_config for Messages. Sampling controls vary by Claude model and thinking mode; consult its model specs.",
+      "context_tokens": 1000000,
+      "max_output_tokens": 128000,
+      "limits_source": "Pinned gateway registry, not a guaranteed account entitlement"
+    },
+    {
+      "id": "claude-fable-5-1",
+      "provider": "anthropic",
+      "endpoints": [
+        "responses",
+        "chat",
+        "messages",
+        "completions"
+      ],
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "budget_min": null,
+      "budget_max": null,
+      "disable_allowed": false,
+      "adaptive": true,
+      "notes": "Gateway registry declaration; provider availability and account limits still apply.",
+      "references": [
+        {
+          "label": "All Messages parameters",
+          "url": "https://platform.claude.com/docs/en/api/messages/create"
+        },
+        {
+          "label": "Claude model specs",
+          "url": "https://platform.claude.com/docs/en/models/overview"
+        },
+        {
+          "label": "Thinking & effort",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/effort"
+        }
+      ],
+      "modifier_note": "Use max_tokens, stream, tools/tool_choice and thinking/output_config for Messages. Sampling controls vary by Claude model and thinking mode; consult its model specs.",
+      "context_tokens": 1000000,
+      "max_output_tokens": 128000,
+      "limits_source": "Pinned gateway registry, not a guaranteed account entitlement"
+    },
+    {
+      "id": "claude-fable-5-2",
+      "provider": "anthropic",
+      "endpoints": [
+        "responses",
+        "chat",
+        "messages",
+        "completions"
+      ],
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "budget_min": null,
+      "budget_max": null,
+      "disable_allowed": false,
+      "adaptive": true,
+      "notes": "Gateway registry declaration; provider availability and account limits still apply.",
+      "references": [
+        {
+          "label": "All Messages parameters",
+          "url": "https://platform.claude.com/docs/en/api/messages/create"
+        },
+        {
+          "label": "Claude model specs",
+          "url": "https://platform.claude.com/docs/en/models/overview"
+        },
+        {
+          "label": "Thinking & effort",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/effort"
+        }
+      ],
+      "modifier_note": "Use max_tokens, stream, tools/tool_choice and thinking/output_config for Messages. Sampling controls vary by Claude model and thinking mode; consult its model specs.",
+      "context_tokens": 1000000,
+      "max_output_tokens": 128000,
+      "limits_source": "Pinned gateway registry, not a guaranteed account entitlement"
+    },
+    {
+      "id": "claude-haiku-4-5-20251001",
+      "provider": "anthropic",
+      "endpoints": [
+        "responses",
+        "chat",
+        "messages",
+        "completions"
+      ],
+      "efforts": [],
+      "budget_min": 1024,
+      "budget_max": 128000,
+      "disable_allowed": true,
+      "adaptive": false,
+      "notes": "Gateway registry declaration; provider availability and account limits still apply.",
+      "references": [
+        {
+          "label": "All Messages parameters",
+          "url": "https://platform.claude.com/docs/en/api/messages/create"
+        },
+        {
+          "label": "Claude model specs",
+          "url": "https://platform.claude.com/docs/en/models/overview"
+        },
+        {
+          "label": "Thinking & effort",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/effort"
+        }
+      ],
+      "modifier_note": "Use max_tokens, stream, tools/tool_choice and thinking/output_config for Messages. Sampling controls vary by Claude model and thinking mode; consult its model specs.",
+      "context_tokens": 200000,
+      "max_output_tokens": 64000,
+      "limits_source": "Pinned gateway registry, not a guaranteed account entitlement"
+    },
+    {
+      "id": "claude-haiku-5-5",
+      "provider": "anthropic",
+      "endpoints": [
+        "responses",
+        "chat",
+        "messages",
+        "completions"
+      ],
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "budget_min": null,
+      "budget_max": null,
+      "disable_allowed": true,
+      "adaptive": true,
+      "notes": "Gateway registry declaration; provider availability and account limits still apply.",
+      "references": [
+        {
+          "label": "All Messages parameters",
+          "url": "https://platform.claude.com/docs/en/api/messages/create"
+        },
+        {
+          "label": "Claude model specs",
+          "url": "https://platform.claude.com/docs/en/models/overview"
+        },
+        {
+          "label": "Thinking & effort",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/effort"
+        }
+      ],
+      "modifier_note": "Use max_tokens, stream, tools/tool_choice and thinking/output_config for Messages. Sampling controls vary by Claude model and thinking mode; consult its model specs.",
+      "context_tokens": 1000000,
+      "max_output_tokens": 128000,
+      "limits_source": "Pinned gateway registry, not a guaranteed account entitlement"
+    },
+    {
+      "id": "claude-opus-4-1-20250805",
+      "provider": "anthropic",
+      "endpoints": [
+        "responses",
+        "chat",
+        "messages",
+        "completions"
+      ],
+      "efforts": [],
+      "budget_min": 1024,
+      "budget_max": 128000,
+      "disable_allowed": false,
+      "adaptive": false,
+      "notes": "Gateway registry declaration; provider availability and account limits still apply.",
+      "references": [
+        {
+          "label": "All Messages parameters",
+          "url": "https://platform.claude.com/docs/en/api/messages/create"
+        },
+        {
+          "label": "Claude model specs",
+          "url": "https://platform.claude.com/docs/en/models/overview"
+        },
+        {
+          "label": "Thinking & effort",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/effort"
+        }
+      ],
+      "modifier_note": "Use max_tokens, stream, tools/tool_choice and thinking/output_config for Messages. Sampling controls vary by Claude model and thinking mode; consult its model specs.",
+      "context_tokens": 200000,
+      "max_output_tokens": 32000,
+      "limits_source": "Pinned gateway registry, not a guaranteed account entitlement"
+    },
+    {
+      "id": "claude-opus-4-20250514",
+      "provider": "anthropic",
+      "endpoints": [
+        "responses",
+        "chat",
+        "messages",
+        "completions"
+      ],
+      "efforts": [],
+      "budget_min": 1024,
+      "budget_max": 128000,
+      "disable_allowed": false,
+      "adaptive": false,
+      "notes": "Gateway registry declaration; provider availability and account limits still apply.",
+      "references": [
+        {
+          "label": "All Messages parameters",
+          "url": "https://platform.claude.com/docs/en/api/messages/create"
+        },
+        {
+          "label": "Claude model specs",
+          "url": "https://platform.claude.com/docs/en/models/overview"
+        },
+        {
+          "label": "Thinking & effort",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/effort"
+        }
+      ],
+      "modifier_note": "Use max_tokens, stream, tools/tool_choice and thinking/output_config for Messages. Sampling controls vary by Claude model and thinking mode; consult its model specs.",
+      "context_tokens": 200000,
+      "max_output_tokens": 32000,
+      "limits_source": "Pinned gateway registry, not a guaranteed account entitlement"
+    },
+    {
+      "id": "claude-opus-4-5-20251101",
+      "provider": "anthropic",
+      "endpoints": [
+        "responses",
+        "chat",
+        "messages",
+        "completions"
+      ],
+      "efforts": [],
+      "budget_min": 1024,
+      "budget_max": 128000,
+      "disable_allowed": true,
+      "adaptive": false,
+      "notes": "Gateway registry declaration; provider availability and account limits still apply.",
+      "references": [
+        {
+          "label": "All Messages parameters",
+          "url": "https://platform.claude.com/docs/en/api/messages/create"
+        },
+        {
+          "label": "Claude model specs",
+          "url": "https://platform.claude.com/docs/en/models/overview"
+        },
+        {
+          "label": "Thinking & effort",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/effort"
+        }
+      ],
+      "modifier_note": "Use max_tokens, stream, tools/tool_choice and thinking/output_config for Messages. Sampling controls vary by Claude model and thinking mode; consult its model specs.",
+      "context_tokens": 200000,
+      "max_output_tokens": 64000,
+      "limits_source": "Pinned gateway registry, not a guaranteed account entitlement"
+    },
+    {
+      "id": "claude-opus-4-6",
+      "provider": "anthropic",
+      "endpoints": [
+        "responses",
+        "chat",
+        "messages",
+        "completions"
+      ],
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "max"
+      ],
+      "budget_min": 1024,
+      "budget_max": 128000,
+      "disable_allowed": true,
+      "adaptive": true,
+      "notes": "Gateway registry declaration; provider availability and account limits still apply.",
+      "references": [
+        {
+          "label": "All Messages parameters",
+          "url": "https://platform.claude.com/docs/en/api/messages/create"
+        },
+        {
+          "label": "Claude model specs",
+          "url": "https://platform.claude.com/docs/en/models/overview"
+        },
+        {
+          "label": "Thinking & effort",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/effort"
+        }
+      ],
+      "modifier_note": "Use max_tokens, stream, tools/tool_choice and thinking/output_config for Messages. Sampling controls vary by Claude model and thinking mode; consult its model specs.",
+      "context_tokens": 1000000,
+      "max_output_tokens": 128000,
+      "limits_source": "Pinned gateway registry, not a guaranteed account entitlement"
+    },
+    {
+      "id": "claude-opus-4-7",
+      "provider": "anthropic",
+      "endpoints": [
+        "responses",
+        "chat",
+        "messages",
+        "completions"
+      ],
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "budget_min": null,
+      "budget_max": null,
+      "disable_allowed": true,
+      "adaptive": true,
+      "notes": "Gateway registry declaration; provider availability and account limits still apply.",
+      "references": [
+        {
+          "label": "All Messages parameters",
+          "url": "https://platform.claude.com/docs/en/api/messages/create"
+        },
+        {
+          "label": "Claude model specs",
+          "url": "https://platform.claude.com/docs/en/models/overview"
+        },
+        {
+          "label": "Thinking & effort",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/effort"
+        }
+      ],
+      "modifier_note": "Use max_tokens, stream, tools/tool_choice and thinking/output_config for Messages. Sampling controls vary by Claude model and thinking mode; consult its model specs.",
+      "context_tokens": 1000000,
+      "max_output_tokens": 128000,
+      "limits_source": "Pinned gateway registry, not a guaranteed account entitlement"
+    },
+    {
+      "id": "claude-opus-4-8",
+      "provider": "anthropic",
+      "endpoints": [
+        "responses",
+        "chat",
+        "messages",
+        "completions"
+      ],
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "budget_min": null,
+      "budget_max": null,
+      "disable_allowed": true,
+      "adaptive": true,
+      "notes": "Gateway registry declaration; provider availability and account limits still apply.",
+      "references": [
+        {
+          "label": "All Messages parameters",
+          "url": "https://platform.claude.com/docs/en/api/messages/create"
+        },
+        {
+          "label": "Claude model specs",
+          "url": "https://platform.claude.com/docs/en/models/overview"
+        },
+        {
+          "label": "Thinking & effort",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/effort"
+        }
+      ],
+      "modifier_note": "Use max_tokens, stream, tools/tool_choice and thinking/output_config for Messages. Sampling controls vary by Claude model and thinking mode; consult its model specs.",
+      "context_tokens": 1000000,
+      "max_output_tokens": 128000,
+      "limits_source": "Pinned gateway registry, not a guaranteed account entitlement"
+    },
+    {
+      "id": "claude-opus-5",
+      "provider": "anthropic",
+      "endpoints": [
+        "responses",
+        "chat",
+        "messages",
+        "completions"
+      ],
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "budget_min": null,
+      "budget_max": null,
+      "disable_allowed": true,
+      "adaptive": true,
+      "notes": "Gateway registry declaration; provider availability and account limits still apply.",
+      "references": [
+        {
+          "label": "All Messages parameters",
+          "url": "https://platform.claude.com/docs/en/api/messages/create"
+        },
+        {
+          "label": "Claude model specs",
+          "url": "https://platform.claude.com/docs/en/models/overview"
+        },
+        {
+          "label": "Thinking & effort",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/effort"
+        }
+      ],
+      "modifier_note": "Use max_tokens, stream, tools/tool_choice and thinking/output_config for Messages. Sampling controls vary by Claude model and thinking mode; consult its model specs.",
+      "context_tokens": 1000000,
+      "max_output_tokens": 128000,
+      "limits_source": "Pinned gateway registry, not a guaranteed account entitlement"
+    },
+    {
+      "id": "claude-opus-5-5",
+      "provider": "anthropic",
+      "endpoints": [
+        "responses",
+        "chat",
+        "messages",
+        "completions"
+      ],
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "budget_min": null,
+      "budget_max": null,
+      "disable_allowed": false,
+      "adaptive": true,
+      "notes": "Gateway registry declaration; provider availability and account limits still apply.",
+      "references": [
+        {
+          "label": "All Messages parameters",
+          "url": "https://platform.claude.com/docs/en/api/messages/create"
+        },
+        {
+          "label": "Claude model specs",
+          "url": "https://platform.claude.com/docs/en/models/overview"
+        },
+        {
+          "label": "Thinking & effort",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/effort"
+        }
+      ],
+      "modifier_note": "Use max_tokens, stream, tools/tool_choice and thinking/output_config for Messages. Sampling controls vary by Claude model and thinking mode; consult its model specs.",
+      "context_tokens": 1000000,
+      "max_output_tokens": 128000,
+      "limits_source": "Pinned gateway registry, not a guaranteed account entitlement"
+    },
+    {
+      "id": "claude-sonnet-4-20250514",
+      "provider": "anthropic",
+      "endpoints": [
+        "responses",
+        "chat",
+        "messages",
+        "completions"
+      ],
+      "efforts": [],
+      "budget_min": 1024,
+      "budget_max": 128000,
+      "disable_allowed": false,
+      "adaptive": false,
+      "notes": "Gateway registry declaration; provider availability and account limits still apply.",
+      "references": [
+        {
+          "label": "All Messages parameters",
+          "url": "https://platform.claude.com/docs/en/api/messages/create"
+        },
+        {
+          "label": "Claude model specs",
+          "url": "https://platform.claude.com/docs/en/models/overview"
+        },
+        {
+          "label": "Thinking & effort",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/effort"
+        }
+      ],
+      "modifier_note": "Use max_tokens, stream, tools/tool_choice and thinking/output_config for Messages. Sampling controls vary by Claude model and thinking mode; consult its model specs.",
+      "context_tokens": 200000,
+      "max_output_tokens": 64000,
+      "limits_source": "Pinned gateway registry, not a guaranteed account entitlement"
+    },
+    {
+      "id": "claude-sonnet-4-5-20250929",
+      "provider": "anthropic",
+      "endpoints": [
+        "responses",
+        "chat",
+        "messages",
+        "completions"
+      ],
+      "efforts": [],
+      "budget_min": 1024,
+      "budget_max": 128000,
+      "disable_allowed": true,
+      "adaptive": false,
+      "notes": "Listed by the gateway, but the provider returned model-not-found (404) in the latest live check. Select a newer Claude model.",
+      "references": [
+        {
+          "label": "All Messages parameters",
+          "url": "https://platform.claude.com/docs/en/api/messages/create"
+        },
+        {
+          "label": "Claude model specs",
+          "url": "https://platform.claude.com/docs/en/models/overview"
+        },
+        {
+          "label": "Thinking & effort",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/effort"
+        }
+      ],
+      "modifier_note": "Use max_tokens, stream, tools/tool_choice and thinking/output_config for Messages. Sampling controls vary by Claude model and thinking mode; consult its model specs.",
+      "context_tokens": 200000,
+      "max_output_tokens": 64000,
+      "limits_source": "Pinned gateway registry, not a guaranteed account entitlement"
+    },
+    {
+      "id": "claude-sonnet-4-6",
+      "provider": "anthropic",
+      "endpoints": [
+        "responses",
+        "chat",
+        "messages",
+        "completions"
+      ],
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "max"
+      ],
+      "budget_min": 1024,
+      "budget_max": 128000,
+      "disable_allowed": true,
+      "adaptive": true,
+      "notes": "Gateway registry declaration; provider availability and account limits still apply.",
+      "references": [
+        {
+          "label": "All Messages parameters",
+          "url": "https://platform.claude.com/docs/en/api/messages/create"
+        },
+        {
+          "label": "Claude model specs",
+          "url": "https://platform.claude.com/docs/en/models/overview"
+        },
+        {
+          "label": "Thinking & effort",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/effort"
+        }
+      ],
+      "modifier_note": "Use max_tokens, stream, tools/tool_choice and thinking/output_config for Messages. Sampling controls vary by Claude model and thinking mode; consult its model specs.",
+      "context_tokens": 200000,
+      "max_output_tokens": 64000,
+      "limits_source": "Pinned gateway registry, not a guaranteed account entitlement"
+    },
+    {
+      "id": "claude-sonnet-5",
+      "provider": "anthropic",
+      "endpoints": [
+        "responses",
+        "chat",
+        "messages",
+        "completions"
+      ],
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "budget_min": null,
+      "budget_max": null,
+      "disable_allowed": true,
+      "adaptive": true,
+      "notes": "Gateway registry declaration; provider availability and account limits still apply.",
+      "references": [
+        {
+          "label": "All Messages parameters",
+          "url": "https://platform.claude.com/docs/en/api/messages/create"
+        },
+        {
+          "label": "Claude model specs",
+          "url": "https://platform.claude.com/docs/en/models/overview"
+        },
+        {
+          "label": "Thinking & effort",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/effort"
+        }
+      ],
+      "modifier_note": "Use max_tokens, stream, tools/tool_choice and thinking/output_config for Messages. Sampling controls vary by Claude model and thinking mode; consult its model specs.",
+      "context_tokens": 1000000,
+      "max_output_tokens": 128000,
+      "limits_source": "Pinned gateway registry, not a guaranteed account entitlement"
+    },
+    {
+      "id": "claude-sonnet-5-5",
+      "provider": "anthropic",
+      "endpoints": [
+        "responses",
+        "chat",
+        "messages",
+        "completions"
+      ],
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "budget_min": null,
+      "budget_max": null,
+      "disable_allowed": true,
+      "adaptive": true,
+      "notes": "Gateway registry declaration; provider availability and account limits still apply.",
+      "disable_type": "between_tools",
+      "references": [
+        {
+          "label": "All Messages parameters",
+          "url": "https://platform.claude.com/docs/en/api/messages/create"
+        },
+        {
+          "label": "Claude model specs",
+          "url": "https://platform.claude.com/docs/en/models/overview"
+        },
+        {
+          "label": "Thinking & effort",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/effort"
+        }
+      ],
+      "modifier_note": "Use max_tokens, stream, tools/tool_choice and thinking/output_config for Messages. Sampling controls vary by Claude model and thinking mode; consult its model specs.",
+      "context_tokens": 1000000,
+      "max_output_tokens": 128000,
+      "limits_source": "Pinned gateway registry, not a guaranteed account entitlement"
+    },
+    {
+      "id": "kimi-k3",
+      "provider": "flatiron",
+      "endpoints": [
+        "responses",
+        "chat",
+        "messages",
+        "completions"
+      ],
+      "efforts": [],
+      "notes": "Flatiron effort controls are not verified here; omit the effort field to use provider defaults. Its upstream returned 500 during the last check.",
+      "references": [
+        {
+          "label": "Model card & generation settings",
+          "url": "https://huggingface.co/moonshotai/Kimi-K3"
+        },
+        {
+          "label": "Chat request format",
+          "url": "https://developers.openai.com/api/reference/python/resources/chat/subresources/completions/methods/create"
+        },
+        {
+          "label": "vLLM OpenAI-compatible API & extra parameters",
+          "url": "https://docs.vllm.ai/en/latest/serving/online_serving/openai_compatible_server/"
+        },
+        {
+          "label": "All vLLM sampling parameters",
+          "url": "https://docs.vllm.ai/en/latest/api/vllm/sampling_params/"
+        },
+        {
+          "label": "LiteLLM vLLM forwarding",
+          "url": "https://docs.litellm.ai/docs/providers/vllm"
+        },
+        {
+          "label": "LiteLLM request parameters",
+          "url": "https://docs.litellm.ai/docs/completion/input"
+        }
+      ],
+      "modifier_note": "Flatiron runs vLLM behind LiteLLM. Use the vLLM API/sampling references plus the model card; LiteLLM and Oxen must also forward a field for it to take effect. Its model list does not publish deployment-specific parameter support."
+    },
+    {
+      "id": "mimo-v2.6-pro",
+      "provider": "flatiron",
+      "endpoints": [
+        "responses",
+        "chat",
+        "messages",
+        "completions"
+      ],
+      "efforts": [],
+      "notes": "Flatiron effort controls are not verified here; omit the effort field to use provider defaults.",
+      "references": [
+        {
+          "label": "Model card & generation settings",
+          "url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.6-Pro-MOPD"
+        },
+        {
+          "label": "Chat request format",
+          "url": "https://developers.openai.com/api/reference/python/resources/chat/subresources/completions/methods/create"
+        },
+        {
+          "label": "vLLM OpenAI-compatible API & extra parameters",
+          "url": "https://docs.vllm.ai/en/latest/serving/online_serving/openai_compatible_server/"
+        },
+        {
+          "label": "All vLLM sampling parameters",
+          "url": "https://docs.vllm.ai/en/latest/api/vllm/sampling_params/"
+        },
+        {
+          "label": "LiteLLM vLLM forwarding",
+          "url": "https://docs.litellm.ai/docs/providers/vllm"
+        },
+        {
+          "label": "LiteLLM request parameters",
+          "url": "https://docs.litellm.ai/docs/completion/input"
+        }
+      ],
+      "modifier_note": "Flatiron runs vLLM behind LiteLLM. Use the vLLM API/sampling references plus the model card; LiteLLM and Oxen must also forward a field for it to take effect. Its model list does not publish deployment-specific parameter support."
+    },
+    {
+      "id": "mistral-medium-3.5",
+      "provider": "flatiron",
+      "endpoints": [
+        "responses",
+        "chat",
+        "messages",
+        "completions"
+      ],
+      "efforts": [],
+      "notes": "Flatiron effort controls are not verified here; omit the effort field to use provider defaults.",
+      "references": [
+        {
+          "label": "Model card & generation settings",
+          "url": "https://huggingface.co/mistralai/Mistral-Medium-3.5-128B"
+        },
+        {
+          "label": "Chat request format",
+          "url": "https://developers.openai.com/api/reference/python/resources/chat/subresources/completions/methods/create"
+        },
+        {
+          "label": "Native Mistral parameters (deployment may differ)",
+          "url": "https://docs.mistral.ai/api/endpoint/chat"
+        },
+        {
+          "label": "vLLM OpenAI-compatible API & extra parameters",
+          "url": "https://docs.vllm.ai/en/latest/serving/online_serving/openai_compatible_server/"
+        },
+        {
+          "label": "All vLLM sampling parameters",
+          "url": "https://docs.vllm.ai/en/latest/api/vllm/sampling_params/"
+        },
+        {
+          "label": "LiteLLM vLLM forwarding",
+          "url": "https://docs.litellm.ai/docs/providers/vllm"
+        },
+        {
+          "label": "LiteLLM request parameters",
+          "url": "https://docs.litellm.ai/docs/completion/input"
+        }
+      ],
+      "modifier_note": "Flatiron runs vLLM behind LiteLLM. Use the vLLM API/sampling references plus the model card; LiteLLM and Oxen must also forward a field for it to take effect. Its model list does not publish deployment-specific parameter support."
+    },
+    {
+      "id": "qwen3.8-27b",
+      "provider": "flatiron",
+      "endpoints": [
+        "responses",
+        "chat",
+        "messages",
+        "completions"
+      ],
+      "efforts": [],
+      "notes": "Flatiron effort controls are not verified here; omit the effort field to use provider defaults.",
+      "references": [
+        {
+          "label": "Model card & generation settings",
+          "url": "https://huggingface.co/Qwen/Qwen3.8-27B-FP8"
+        },
+        {
+          "label": "Chat request format",
+          "url": "https://developers.openai.com/api/reference/python/resources/chat/subresources/completions/methods/create"
+        },
+        {
+          "label": "vLLM OpenAI-compatible API & extra parameters",
+          "url": "https://docs.vllm.ai/en/latest/serving/online_serving/openai_compatible_server/"
+        },
+        {
+          "label": "All vLLM sampling parameters",
+          "url": "https://docs.vllm.ai/en/latest/api/vllm/sampling_params/"
+        },
+        {
+          "label": "LiteLLM vLLM forwarding",
+          "url": "https://docs.litellm.ai/docs/providers/vllm"
+        },
+        {
+          "label": "LiteLLM request parameters",
+          "url": "https://docs.litellm.ai/docs/completion/input"
+        }
+      ],
+      "modifier_note": "Flatiron runs vLLM behind LiteLLM. Use the vLLM API/sampling references plus the model card; LiteLLM and Oxen must also forward a field for it to take effect. Its model list does not publish deployment-specific parameter support."
+    },
+    {
+      "id": "codex-auto-review",
+      "provider": "openai",
+      "endpoints": [
+        "responses",
+        "chat",
+        "messages",
+        "completions"
+      ],
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh"
+      ],
+      "budget_min": null,
+      "budget_max": null,
+      "disable_allowed": false,
+      "adaptive": true,
+      "notes": "Gateway registry declaration; provider availability and account limits still apply.",
+      "references": [
+        {
+          "label": "All Responses parameters",
+          "url": "https://developers.openai.com/api/reference/python/resources/responses/methods/create"
+        },
+        {
+          "label": "All Chat parameters",
+          "url": "https://developers.openai.com/api/reference/python/resources/chat/subresources/completions/methods/create"
+        },
+        {
+          "label": "OpenAI model specs",
+          "url": "https://developers.openai.com/api/docs/models"
+        }
+      ],
+      "modifier_note": "API references describe the native OpenAI API; Codex-account gateway behavior can differ. Do not assume sampling, storage or output-cap fields are enforced unchanged.",
+      "context_tokens": 272000,
+      "max_output_tokens": 128000,
+      "limits_source": "Pinned gateway registry, not a guaranteed account entitlement"
+    },
+    {
+      "id": "gpt-5.6-luna",
+      "provider": "openai",
+      "endpoints": [
+        "responses",
+        "chat",
+        "messages",
+        "completions"
+      ],
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "budget_min": null,
+      "budget_max": null,
+      "disable_allowed": false,
+      "adaptive": true,
+      "notes": "Gateway registry declaration; provider availability and account limits still apply.",
+      "references": [
+        {
+          "label": "All Responses parameters",
+          "url": "https://developers.openai.com/api/reference/python/resources/responses/methods/create"
+        },
+        {
+          "label": "All Chat parameters",
+          "url": "https://developers.openai.com/api/reference/python/resources/chat/subresources/completions/methods/create"
+        },
+        {
+          "label": "OpenAI model specs",
+          "url": "https://developers.openai.com/api/docs/models"
+        }
+      ],
+      "modifier_note": "API references describe the native OpenAI API; Codex-account gateway behavior can differ. Do not assume sampling, storage or output-cap fields are enforced unchanged.",
+      "context_tokens": 921000,
+      "max_output_tokens": 128000,
+      "limits_source": "Pinned gateway registry, not a guaranteed account entitlement"
+    },
+    {
+      "id": "gpt-5.6-sol",
+      "provider": "openai",
+      "endpoints": [
+        "responses",
+        "chat",
+        "messages",
+        "completions"
+      ],
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "budget_min": null,
+      "budget_max": null,
+      "disable_allowed": false,
+      "adaptive": true,
+      "notes": "Gateway registry declaration; provider availability and account limits still apply.",
+      "references": [
+        {
+          "label": "All Responses parameters",
+          "url": "https://developers.openai.com/api/reference/python/resources/responses/methods/create"
+        },
+        {
+          "label": "All Chat parameters",
+          "url": "https://developers.openai.com/api/reference/python/resources/chat/subresources/completions/methods/create"
+        },
+        {
+          "label": "OpenAI model specs",
+          "url": "https://developers.openai.com/api/docs/models"
+        }
+      ],
+      "modifier_note": "API references describe the native OpenAI API; Codex-account gateway behavior can differ. Do not assume sampling, storage or output-cap fields are enforced unchanged.",
+      "context_tokens": 921000,
+      "max_output_tokens": 128000,
+      "limits_source": "Pinned gateway registry, not a guaranteed account entitlement"
+    },
+    {
+      "id": "gpt-5.6-terra",
+      "provider": "openai",
+      "endpoints": [
+        "responses",
+        "chat",
+        "messages",
+        "completions"
+      ],
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "budget_min": null,
+      "budget_max": null,
+      "disable_allowed": false,
+      "adaptive": true,
+      "notes": "Gateway registry declaration; provider availability and account limits still apply.",
+      "references": [
+        {
+          "label": "All Responses parameters",
+          "url": "https://developers.openai.com/api/reference/python/resources/responses/methods/create"
+        },
+        {
+          "label": "All Chat parameters",
+          "url": "https://developers.openai.com/api/reference/python/resources/chat/subresources/completions/methods/create"
+        },
+        {
+          "label": "OpenAI model specs",
+          "url": "https://developers.openai.com/api/docs/models"
+        }
+      ],
+      "modifier_note": "API references describe the native OpenAI API; Codex-account gateway behavior can differ. Do not assume sampling, storage or output-cap fields are enforced unchanged.",
+      "context_tokens": 921000,
+      "max_output_tokens": 128000,
+      "limits_source": "Pinned gateway registry, not a guaranteed account entitlement"
+    },
+    {
+      "id": "gpt-6-astra",
+      "provider": "openai",
+      "endpoints": [
+        "responses",
+        "chat",
+        "messages",
+        "completions"
+      ],
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "budget_min": null,
+      "budget_max": null,
+      "disable_allowed": false,
+      "adaptive": true,
+      "notes": "Gateway registry declaration; provider availability and account limits still apply.",
+      "references": [
+        {
+          "label": "All Responses parameters",
+          "url": "https://developers.openai.com/api/reference/python/resources/responses/methods/create"
+        },
+        {
+          "label": "All Chat parameters",
+          "url": "https://developers.openai.com/api/reference/python/resources/chat/subresources/completions/methods/create"
+        },
+        {
+          "label": "Model specs",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6-astra"
+        }
+      ],
+      "modifier_note": "API references describe the native OpenAI API; Codex-account gateway behavior can differ. Do not assume sampling, storage or output-cap fields are enforced unchanged.",
+      "context_tokens": 272000,
+      "max_output_tokens": 128000,
+      "limits_source": "Pinned gateway registry, not a guaranteed account entitlement"
+    },
+    {
+      "id": "gpt-6-chat-thinking",
+      "provider": "openai",
+      "endpoints": [
+        "responses",
+        "chat",
+        "messages",
+        "completions"
+      ],
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "budget_min": null,
+      "budget_max": null,
+      "disable_allowed": false,
+      "adaptive": true,
+      "notes": "Gateway registry declaration; provider availability and account limits still apply.",
+      "references": [
+        {
+          "label": "All Responses parameters",
+          "url": "https://developers.openai.com/api/reference/python/resources/responses/methods/create"
+        },
+        {
+          "label": "All Chat parameters",
+          "url": "https://developers.openai.com/api/reference/python/resources/chat/subresources/completions/methods/create"
+        },
+        {
+          "label": "OpenAI model specs",
+          "url": "https://developers.openai.com/api/docs/models"
+        }
+      ],
+      "modifier_note": "API references describe the native OpenAI API; Codex-account gateway behavior can differ. Do not assume sampling, storage or output-cap fields are enforced unchanged.",
+      "context_tokens": 272000,
+      "max_output_tokens": 128000,
+      "limits_source": "Pinned gateway registry, not a guaranteed account entitlement"
+    },
+    {
+      "id": "gpt-6-luna",
+      "provider": "openai",
+      "endpoints": [
+        "responses",
+        "chat",
+        "messages",
+        "completions"
+      ],
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "budget_min": null,
+      "budget_max": null,
+      "disable_allowed": false,
+      "adaptive": true,
+      "notes": "Gateway registry declaration; provider availability and account limits still apply.",
+      "references": [
+        {
+          "label": "All Responses parameters",
+          "url": "https://developers.openai.com/api/reference/python/resources/responses/methods/create"
+        },
+        {
+          "label": "All Chat parameters",
+          "url": "https://developers.openai.com/api/reference/python/resources/chat/subresources/completions/methods/create"
+        },
+        {
+          "label": "Model specs",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6-luna"
+        }
+      ],
+      "modifier_note": "API references describe the native OpenAI API; Codex-account gateway behavior can differ. Do not assume sampling, storage or output-cap fields are enforced unchanged.",
+      "context_tokens": 272000,
+      "max_output_tokens": 128000,
+      "limits_source": "Pinned gateway registry, not a guaranteed account entitlement"
+    },
+    {
+      "id": "gpt-6-sol",
+      "provider": "openai",
+      "endpoints": [
+        "responses",
+        "chat",
+        "messages",
+        "completions"
+      ],
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "budget_min": null,
+      "budget_max": null,
+      "disable_allowed": false,
+      "adaptive": true,
+      "notes": "Gateway registry declaration; provider availability and account limits still apply.",
+      "references": [
+        {
+          "label": "All Responses parameters",
+          "url": "https://developers.openai.com/api/reference/python/resources/responses/methods/create"
+        },
+        {
+          "label": "All Chat parameters",
+          "url": "https://developers.openai.com/api/reference/python/resources/chat/subresources/completions/methods/create"
+        },
+        {
+          "label": "Model specs",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6-sol"
+        }
+      ],
+      "modifier_note": "API references describe the native OpenAI API; Codex-account gateway behavior can differ. Do not assume sampling, storage or output-cap fields are enforced unchanged.",
+      "context_tokens": 272000,
+      "max_output_tokens": 128000,
+      "limits_source": "Pinned gateway registry, not a guaranteed account entitlement"
+    },
+    {
+      "id": "gpt-6.1-sol",
+      "provider": "openai",
+      "endpoints": [
+        "responses",
+        "chat",
+        "messages",
+        "completions"
+      ],
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "budget_min": null,
+      "budget_max": null,
+      "disable_allowed": false,
+      "adaptive": true,
+      "notes": "Gateway registry declaration; provider availability and account limits still apply.",
+      "references": [
+        {
+          "label": "All Responses parameters",
+          "url": "https://developers.openai.com/api/reference/python/resources/responses/methods/create"
+        },
+        {
+          "label": "All Chat parameters",
+          "url": "https://developers.openai.com/api/reference/python/resources/chat/subresources/completions/methods/create"
+        },
+        {
+          "label": "Model specs",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol"
+        }
+      ],
+      "modifier_note": "API references describe the native OpenAI API; Codex-account gateway behavior can differ. Do not assume sampling, storage or output-cap fields are enforced unchanged.",
+      "context_tokens": 272000,
+      "max_output_tokens": 128000,
+      "limits_source": "Pinned gateway registry, not a guaranteed account entitlement"
+    },
+    {
+      "id": "gpt-6.1-terra",
+      "provider": "openai",
+      "endpoints": [
+        "responses",
+        "chat",
+        "messages",
+        "completions"
+      ],
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "budget_min": null,
+      "budget_max": null,
+      "disable_allowed": false,
+      "adaptive": true,
+      "notes": "Gateway registry declaration; provider availability and account limits still apply.",
+      "references": [
+        {
+          "label": "All Responses parameters",
+          "url": "https://developers.openai.com/api/reference/python/resources/responses/methods/create"
+        },
+        {
+          "label": "All Chat parameters",
+          "url": "https://developers.openai.com/api/reference/python/resources/chat/subresources/completions/methods/create"
+        },
+        {
+          "label": "Model specs",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6.1-terra"
+        }
+      ],
+      "modifier_note": "API references describe the native OpenAI API; Codex-account gateway behavior can differ. Do not assume sampling, storage or output-cap fields are enforced unchanged.",
+      "context_tokens": 500000,
+      "max_output_tokens": 128000,
+      "limits_source": "Pinned gateway registry, not a guaranteed account entitlement"
+    },
+    {
+      "id": "gpt-6.2-astra",
+      "provider": "openai",
+      "endpoints": [
+        "responses",
+        "chat",
+        "messages",
+        "completions"
+      ],
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "budget_min": null,
+      "budget_max": null,
+      "disable_allowed": false,
+      "adaptive": true,
+      "notes": "Gateway registry declaration; provider availability and account limits still apply.",
+      "references": [
+        {
+          "label": "All Responses parameters",
+          "url": "https://developers.openai.com/api/reference/python/resources/responses/methods/create"
+        },
+        {
+          "label": "All Chat parameters",
+          "url": "https://developers.openai.com/api/reference/python/resources/chat/subresources/completions/methods/create"
+        },
+        {
+          "label": "Model specs",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6.2-astra"
+        }
+      ],
+      "modifier_note": "API references describe the native OpenAI API; the Codex-account gateway can normalize or omit fields. For GPT-6.2 omit temperature, top_p and logprob controls; use Responses for tool calling.",
+      "context_tokens": 272000,
+      "max_output_tokens": 128000,
+      "limits_source": "Pinned gateway registry, not a guaranteed account entitlement"
+    },
+    {
+      "id": "gpt-6.2-sol",
+      "provider": "openai",
+      "endpoints": [
+        "responses",
+        "chat",
+        "messages",
+        "completions"
+      ],
+      "efforts": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ],
+      "budget_min": null,
+      "budget_max": null,
+      "disable_allowed": false,
+      "adaptive": true,
+      "notes": "Gateway registry declaration; provider availability and account limits still apply.",
+      "references": [
+        {
+          "label": "All Responses parameters",
+          "url": "https://developers.openai.com/api/reference/python/resources/responses/methods/create"
+        },
+        {
+          "label": "All Chat parameters",
+          "url": "https://developers.openai.com/api/reference/python/resources/chat/subresources/completions/methods/create"
+        },
+        {
+          "label": "Model specs",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6.2-sol"
+        }
+      ],
+      "modifier_note": "API references describe the native OpenAI API; the Codex-account gateway can normalize or omit fields. For GPT-6.2 omit temperature, top_p and logprob controls; use Responses for tool calling.",
+      "context_tokens": 500000,
+      "max_output_tokens": 128000,
+      "limits_source": "Pinned gateway registry, not a guaranteed account entitlement"
+    },
+    {
+      "id": "gpt-image-1.5",
+      "provider": "openai",
+      "endpoints": [
+        "images"
+      ],
+      "efforts": [],
+      "notes": "Image model; reasoning effort does not apply. Image routes are registered but not validated here.",
+      "references": [
+        {
+          "label": "Image generation parameters & limits",
+          "url": "https://developers.openai.com/api/docs/guides/image-generation"
+        },
+        {
+          "label": "Image model specs",
+          "url": "https://developers.openai.com/api/docs/models/all"
+        }
+      ],
+      "modifier_note": "Image controls include size, quality, output format and background, depending on the exact model. Image routes are registered but not validated here."
+    },
+    {
+      "id": "gpt-image-2",
+      "provider": "openai",
+      "endpoints": [
+        "images"
+      ],
+      "efforts": [],
+      "notes": "Image model; reasoning effort does not apply. Image routes are registered but not validated here.",
+      "references": [
+        {
+          "label": "Image generation parameters & limits",
+          "url": "https://developers.openai.com/api/docs/guides/image-generation"
+        },
+        {
+          "label": "Image model specs",
+          "url": "https://developers.openai.com/api/docs/models/all"
+        }
+      ],
+      "modifier_note": "Image controls include size, quality, output format and background, depending on the exact model. Image routes are registered but not validated here."
+    },
+    {
+      "id": "gpt-image-2.5",
+      "provider": "openai",
+      "endpoints": [
+        "images"
+      ],
+      "efforts": [],
+      "notes": "Image model; reasoning effort does not apply. Image routes are registered but not validated here.",
+      "references": [
+        {
+          "label": "Image generation parameters & limits",
+          "url": "https://developers.openai.com/api/docs/guides/image-generation"
+        },
+        {
+          "label": "Image model specs",
+          "url": "https://developers.openai.com/api/docs/models/all"
+        }
+      ],
+      "modifier_note": "Image controls include size, quality, output format and background, depending on the exact model. Image routes are registered but not validated here."
+    },
+    {
+      "id": "gpt-image-2.5-flare",
+      "provider": "openai",
+      "endpoints": [
+        "images"
+      ],
+      "efforts": [],
+      "notes": "Image model; reasoning effort does not apply. Image routes are registered but not validated here.",
+      "references": [
+        {
+          "label": "Image generation parameters & limits",
+          "url": "https://developers.openai.com/api/docs/guides/image-generation"
+        },
+        {
+          "label": "Image model specs",
+          "url": "https://developers.openai.com/api/docs/models/all"
+        }
+      ],
+      "modifier_note": "Image controls include size, quality, output format and background, depending on the exact model. Image routes are registered but not validated here."
+    },
+    {
+      "id": "gpt-image-2.5-sunburst",
+      "provider": "openai",
+      "endpoints": [
+        "images"
+      ],
+      "efforts": [],
+      "notes": "Image model; reasoning effort does not apply. Image routes are registered but not validated here.",
+      "references": [
+        {
+          "label": "Image generation parameters & limits",
+          "url": "https://developers.openai.com/api/docs/guides/image-generation"
+        },
+        {
+          "label": "Image model specs",
+          "url": "https://developers.openai.com/api/docs/models/all"
+        }
+      ],
+      "modifier_note": "Image controls include size, quality, output format and background, depending on the exact model. Image routes are registered but not validated here."
+    },
+    {
+      "id": "gpt-image-2.6",
+      "provider": "openai",
+      "endpoints": [
+        "images"
+      ],
+      "efforts": [],
+      "notes": "Image model; reasoning effort does not apply. Image routes are registered but not validated here.",
+      "references": [
+        {
+          "label": "Image generation parameters & limits",
+          "url": "https://developers.openai.com/api/docs/guides/image-generation"
+        },
+        {
+          "label": "Image model specs",
+          "url": "https://developers.openai.com/api/docs/models/all"
+        }
+      ],
+      "modifier_note": "Image controls include size, quality, output format and background, depending on the exact model. Image routes are registered but not validated here."
+    },
+    {
+      "id": "gpt-image-2.6-flare",
+      "provider": "openai",
+      "endpoints": [
+        "images"
+      ],
+      "efforts": [],
+      "notes": "Image model; reasoning effort does not apply. Image routes are registered but not validated here.",
+      "references": [
+        {
+          "label": "Image generation parameters & limits",
+          "url": "https://developers.openai.com/api/docs/guides/image-generation"
+        },
+        {
+          "label": "Image model specs",
+          "url": "https://developers.openai.com/api/docs/models/all"
+        }
+      ],
+      "modifier_note": "Image controls include size, quality, output format and background, depending on the exact model. Image routes are registered but not validated here."
+    },
+    {
+      "id": "gpt-image-2.6-sunburst",
+      "provider": "openai",
+      "endpoints": [
+        "images"
+      ],
+      "efforts": [],
+      "notes": "Image model; reasoning effort does not apply. Image routes are registered but not validated here.",
+      "references": [
+        {
+          "label": "Image generation parameters & limits",
+          "url": "https://developers.openai.com/api/docs/guides/image-generation"
+        },
+        {
+          "label": "Image model specs",
+          "url": "https://developers.openai.com/api/docs/models/all"
+        }
+      ],
+      "modifier_note": "Image controls include size, quality, output format and background, depending on the exact model. Image routes are registered but not validated here."
+    },
+    {
+      "id": "deepseek-4.1",
+      "provider": "openrouter",
+      "endpoints": [
+        "responses",
+        "chat",
+        "messages",
+        "completions"
+      ],
+      "efforts": [
+        "none",
+        "low",
+        "high",
+        "max"
+      ],
+      "notes": "OpenRouter alias for deepseek/deepseek-v4.1-flash-1017. Native DeepSeek levels; OpenRouter may normalize levels by provider.",
+      "disable_allowed": true,
+      "references": [
+        {
+          "label": "Model parameters & limits",
+          "url": "https://openrouter.ai/deepseek/deepseek-v4.1-flash-1017"
+        },
+        {
+          "label": "All OpenRouter parameters",
+          "url": "https://openrouter.ai/docs/api_reference/parameters"
+        },
+        {
+          "label": "Native DeepSeek parameter reference",
+          "url": "https://api-docs.deepseek.com/api/create-chat-completion/"
+        }
+      ],
+      "reported_parameters": [
+        "frequency_penalty",
+        "include_reasoning",
+        "logit_bias",
+        "logprobs",
+        "max_completion_tokens",
+        "max_tokens",
+        "min_p",
+        "parallel_tool_calls",
+        "presence_penalty",
+        "reasoning",
+        "reasoning_effort",
+        "repetition_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_k",
+        "top_logprobs",
+        "top_p"
+      ],
+      "context_tokens": 1048576,
+      "max_output_tokens": 393216,
+      "limits_source": "OpenRouter model catalog, checked 2026-11-18; provider routing can change limits",
+      "modifier_note": "Parameters below are advertised by OpenRouter for this exact model. Some entries are capability flags, not literal request fields. Oxen translates endpoint formats; check the referenced schema for each option."
+    },
+    {
+      "id": "glm-5.3",
+      "provider": "openrouter",
+      "endpoints": [
+        "responses",
+        "chat",
+        "messages",
+        "completions"
+      ],
+      "efforts": [
+        "low",
+        "high",
+        "max"
+      ],
+      "notes": "Reasoning is always on. Do not use none; medium is not a documented native level. OpenRouter provider documentation.",
+      "disable_allowed": false,
+      "references": [
+        {
+          "label": "Model parameters & limits",
+          "url": "https://openrouter.ai/z-ai/glm-5.3"
+        },
+        {
+          "label": "All OpenRouter parameters",
+          "url": "https://openrouter.ai/docs/api_reference/parameters"
+        }
+      ],
+      "reported_parameters": [
+        "frequency_penalty",
+        "include_reasoning",
+        "logit_bias",
+        "logprobs",
+        "max_tokens",
+        "min_p",
+        "parallel_tool_calls",
+        "presence_penalty",
+        "reasoning",
+        "reasoning_effort",
+        "repetition_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_k",
+        "top_logprobs",
+        "top_p"
+      ],
+      "context_tokens": 1048576,
+      "max_output_tokens": 943718,
+      "limits_source": "OpenRouter model catalog, checked 2026-11-18; provider routing can change limits",
+      "modifier_note": "Parameters below are advertised by OpenRouter for this exact model. Some entries are capability flags, not literal request fields. Oxen translates endpoint formats; check the referenced schema for each option."
+    }
+  ],
+  "gateway_version": "8.0.77",
+  "reviewed": "2026-11-18",
+  "captured_at": "2026-11-19T03:25:24.429222+00:00",
+  "source": "GET https://oxen.lemma.farm/api/v1/capabilities",
+  "note": "Public dated snapshot. Query the authenticated capability API for current model availability and settings; no browser login is needed."
+}

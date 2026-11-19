@@ -108,7 +108,9 @@ with `source.json`, `request.json`, `response.body`, optional `events.jsonl`,
 
 For single requests use `/api/v1/models`, `/api/v1/responses`,
 `/api/v1/chat/completions` or `/api/v1/messages`, with the same credential headers.
-The signed-in Oxen docs at `https://oxen.lemma.farm/docs` contain current aliases,
-effort settings, endpoint differences and per-model modifier references.
+Use authenticated `GET /api/v1/capabilities` for current aliases, effort levels,
+endpoint support and per-model modifier references. The public
+[inference instructions](inference-api.md) and
+[full capability snapshot](model-capabilities.json) are available without browser login.
 OpenRouter and Flatiron requests cross adapters; their native documentation does
 not imply every field is preserved. Flatiron uses vLLM behind LiteLLM.

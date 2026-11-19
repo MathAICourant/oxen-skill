@@ -1,6 +1,6 @@
 # Model parameters and modifiers
 
-Reference reviewed 2026-11-19. Query authenticated `GET /api/v1/models` for current registered IDs. Gateway declarations and native provider APIs can differ; links below do not guarantee every native field is forwarded.
+Reference reviewed 2026-11-19. Query authenticated `GET /api/v1/capabilities` for current IDs, efforts, limits and parameter references, or `GET /api/v1/models` for just IDs. The complete dated [model-capabilities.json](model-capabilities.json) snapshot is available publicly without browser login. Gateway declarations and native provider APIs can differ; links below do not guarantee every native field is forwarded.
 
 ## gpt-6.2-sol
 

@@ -36,6 +36,11 @@ Example POST body:
 }
 ```
 
+Request states are `queued`, `running`, `succeeded`, `failed`, `cancelled`,
+and `interrupted`. Poll until a terminal state; inspect `error` before claiming
+success. The [inference reference](inference-api.md) documents model parameters
+and authentication without requiring access to the protected website.
+
 `body` is the complete native request object for the selected endpoint.
 `endpoint` defaults to `/v1/chat/completions`, with `/v1/responses`, `/v1/messages`
 and `/v1/completions` also supported. `timeout_seconds` is 10–86400 and defaults

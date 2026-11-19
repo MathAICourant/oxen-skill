@@ -55,7 +55,9 @@ The enabled agents are:
 | `claude-code` | Claude models | Anthropic Messages |
 
 Codex 0.170.0 and Claude Code 2.1.318 were tested with real SymPy computations,
-code/answer artifacts, per-key accounting and sandbox deletion. The catalog
+code/answer artifacts, per-key accounting and sandbox deletion. Claude Code effort choices are low/medium/high/xhigh/max where supported by the
+selected model; none/minimal are not native Claude Code effort settings.
+The catalog
 reports enabled choices and the native runtime versions/checksums; consult it
 rather than assuming all upstream agents are installed. Codex runtime bundles
 include its code-mode host and companion files, not only the main executable.
@@ -221,7 +223,7 @@ cancelled and timed-out runs retain available intermediate data. A cleanup failu
 is reported explicitly; do not claim a sandbox was removed unless recorded.
 Cancellation returns promptly; `cleanup_pending` is true while cleanup continues.
 
-The default server cap is four active agent sandboxes. Actual model calls share
+The configured server cap is 15 active agent sandboxes. Actual model calls share
 15 slots per provider with Yoke, including aliases sharing OpenRouter/Flatiron.
 Direct standalone model API requests are outside this queue limit. Queued agent
 work resumes after restart; interrupted active runs are not automatically replayed.
