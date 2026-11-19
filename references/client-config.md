@@ -1,6 +1,6 @@
 # Codex and Claude Code clients
 
-Get a 90-day API key from https://oxen.lemma.farm/. Store its client ID in
+Get a 90-day API key from https://oxen.lemma.farm/keys. Store its client ID in
 `CF_ACCESS_CLIENT_ID` and secret in `CF_ACCESS_CLIENT_SECRET`. Both headers are
 required; a provider SDK's `api_key` alone does not authenticate to Oxen.
 

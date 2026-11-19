@@ -33,6 +33,11 @@ usage ledger; browser-created runs belong to the signed-in account.
 - `POST /run/{run_id}/cancel`: cancel queued/running work; collect what is available
   and remove its sandbox. Provider work already accepted can still be billed.
 
+The web interface has matching **Direct requests** and **Batches** tabs on
+Wagon and Yoke. Agent/environment/resource controls are specific to Wagon;
+model endpoint/request controls are specific to Yoke. Both retain the selected
+activity view, per-request timestamps, cancellation, results and ZIP downloads.
+
 Single-question submissions are persisted with `kind: "single"`; intentional
 JSONL uploads have `kind: "batch"`, even for a one-line file. `/batch` lists only
 uploaded batches; `/runs` lists individual questions. Existing single questions
@@ -223,3 +228,13 @@ work resumes after restart; interrupted active runs are not automatically replay
 Keep Harbor internal: its native server does not provide Oxen's per-owner job
 isolation. Never publish a user's inputs, outputs, credentials, or private runtime
 configuration in this public skill repository.
+
+## Server-managed Daytona account fallback
+
+Oxen may switch to a configured backup Daytona account if sandbox provisioning
+reports insufficient credits. The account alias is saved in `execution.json`
+as `daytona_account`; the credential is never installed in the sandbox or
+returned in results. Cleanup uses the recorded account. This is provisioning
+failover, not live migration of an agent already running. Authentication,
+permission, quota and network errors are reported rather than triggering
+credit failover. Users do not need to select accounts or provide Daytona keys.

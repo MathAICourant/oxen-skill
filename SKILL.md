@@ -6,7 +6,7 @@ description: Use Oxen model APIs, run ephemeral mathematical agents with Wagon, 
 # Oxen
 
 Use the authenticated Oxen model API at `https://oxen.lemma.farm/api/v1`.
-The user obtains a 90-day API key at `https://oxen.lemma.farm/`.
+The user obtains a 90-day API key at `https://oxen.lemma.farm/keys`.
 Send both headers on every API request, including WebSocket upgrades:
 
 - `CF-Access-Client-Id`: read from `CF_ACCESS_CLIENT_ID`.
@@ -23,6 +23,11 @@ headers perform authentication. Browser cookies do not replace service credentia
 For a public model reference without browser login, read
 [references/models.md](references/models.md) for common aliases and their primary
 parameter documentation.
+
+The [homepage](https://oxen.lemma.farm/) links to API keys, Yoke, Wagon and this skill.
+Both Yoke and Wagon use **Direct requests** and **Batches** tabs with separate
+histories. For a durable single model request through Yoke, read
+[references/direct-api.md](references/direct-api.md).
 
 ## Single model requests
 
