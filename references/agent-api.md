@@ -163,6 +163,61 @@ Daytona currently rejects custom internet policies on the configured accounts;
 `network.mode: "public"`/`"allowlist"` require an account tier that supports them.
 Use `download_urls` with `network.mode: "none"` for pre-supplied web files.
 
+## Attach outputs from previous runs
+
+Set `source_run_ids` to an array of finished Wagon run IDs belonging to the same
+verified account. This works in `POST /run`, every Wagon JSONL row and the browser
+form. The browser's **Use outputs** button adds a finished direct request to that
+field. Obtain IDs from `/run`, `/runs`, the page's `?run=` value or a batch's
+individual request listing. These are run IDs, not batch IDs or Yoke IDs.
+
+```json
+{
+  "question": "Check the attached solution against the original question in run.json. Use Python where helpful. Save grade.json with a correctness score and explanation.",
+  "agent": "codex",
+  "model": "gpt-6.2-sol",
+  "reasoning_effort": "high",
+  "source_run_ids": ["0123456789abcdef0123456789abcdef"]
+}
+```
+
+The ID above is a placeholder. Replace it with an actual finished run ID.
+Repeat `--source-run-id` for multiple sources in the CLI:
+
+```bash
+python3 scripts/oxen_wagon.py "Check the attached solution and save grade.json" --agent codex --source-run-id RUN_ID
+```
+
+The fresh sandbox receives `/workspace/source_runs/manifest.json` and a separate
+`/workspace/source_runs/RUN_ID/` directory for each source, containing:
+
+- `answer.txt`, when the source saved an answer.
+- `run.json`: original question/settings, run ID, timestamps and source status.
+  The original question is at `request.question`.
+- `workspace/`: saved workspace files, including hidden files and prior inputs.
+- `activity.jsonl` and `trajectory.json`, when available.
+
+The manifest records exact copied paths, sizes, SHA-256 hashes and a per-source
+snapshot hash. The status API returns it as `source_run_manifest`. The ZIP includes
+the staged copies and manifest, plus the new run's own answer/files. Original
+source files are not changed; this does not resume a previous sandbox or agent
+session. Internal worker logs/configuration and server credentials are not attached.
+
+Limits: up to 10 sources, 10,000 files and 256 MiB combined source data. Downloaded
+web inputs plus source attachments must also fit `limits.max_artifact_bytes`.
+Unsupported symlinks, hard-linked and special files are rejected. Source ownership,
+finished state and saved outputs are checked during validation and again at
+execution. Files are copied only when the new run starts, within its setup budget.
+Increase `timeouts.setup_seconds`/the artifact byte cap for large inputs.
+
+Finished failed, cancelled and interrupted runs can supply saved outputs; their
+manifest entries are marked `partial`. A source still running or collecting files
+is rejected. There is no automatic dependency waiting: submit a follow-up after
+the source finishes. JSONL rows cannot refer to future runs in the same upload.
+
+This enables grading as an ordinary new agent run. A generated `grade.json` is a
+normal saved output, not a special grading API response or an enforced score.
+
 ## Live activity
 
 The web Activity view polls about every two seconds. The selected run is saved
@@ -217,6 +272,7 @@ explicit defaults, saved as request JSON for each row. No credentials go in JSON
 | `custom_id` | Optional user identifier, up to 512 characters. |
 | `question` | Required task text, up to 1,000,000 characters. |
 | `download_urls` | `[]`; up to 10 public HTTP(S) URLs fetched before execution and copied into `/workspace/inputs/`. See input-file limits and manifest above. |
+| `source_run_ids` | `[]`; up to 10 finished, owned Wagon runs whose saved outputs are copied into `/workspace/source_runs/RUN_ID/`. See attachment limits and layout above. |
 | `agent` | `terminus-2`; must be enabled in `/catalog`. |
 | `model` | `gpt-6.2-sol`, or `claude-sonnet-4-6` when `agent` is `claude-code`; must be in the live Oxen model catalog. |
 | `reasoning_effort` | Omitted means model default. Values depend on model: `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, `max`. Consult [models](models.md). |

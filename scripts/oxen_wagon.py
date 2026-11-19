@@ -38,6 +38,7 @@ def main():
     parser.add_argument("--network", choices=("none", "public", "allowlist"), default="none")
     parser.add_argument("--allow-host", action="append", default=[])
     parser.add_argument("--download-url", action="append", default=[], help="Public file to add to /workspace/inputs/; repeat for multiple files")
+    parser.add_argument("--source-run-id", action="append", default=[], help="Attach saved outputs from one of your finished Wagon runs; repeat for multiple runs")
     parser.add_argument("--output", type=Path, default=Path("wagon-results"))
     parser.add_argument("--no-wait", action="store_true")
     args = parser.parse_args()
@@ -49,6 +50,7 @@ def main():
             "timeouts": {"run_seconds": args.max_runtime, "setup_seconds": args.setup_timeout},
             "network": {"mode": args.network, "allowed_hosts": args.allow_host},
             "download_urls": args.download_url,
+            "source_run_ids": args.source_run_id,
         }
         if args.effort:
             request["reasoning_effort"] = args.effort

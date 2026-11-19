@@ -34,6 +34,17 @@
       "default": [],
       "description": "Public HTTP(S) files fetched by Oxen before agent setup and copied into /workspace/inputs/. Up to 10 URLs, 64 MiB each, 128 MiB total (also bounded by limits.max_artifact_bytes), 60 seconds per file within setup_seconds. No credentials, private addresses or nonstandard ports. Download failures fail the run. Does not enable sandbox internet."
     },
+    "source_run_ids": {
+      "type": "array",
+      "maxItems": 10,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-f0-9]{32}$"
+      },
+      "default": [],
+      "description": "Finished Wagon run IDs belonging to the same verified account. Copies the saved answer, question/settings/status and workspace files into /workspace/source_runs/<run_id>/. No session or internal worker state is resumed. At most 10 runs, 10000 files and 256 MiB total; downloads plus attached runs must fit limits.max_artifact_bytes. Partial saved outputs from finished failed/cancelled/interrupted runs are marked partial. Running or inaccessible runs are rejected."
+    },
     "agent": {
       "enum": [
         "terminus-2",

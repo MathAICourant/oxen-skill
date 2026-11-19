@@ -71,6 +71,9 @@ Check `/api/v1/wagon/catalog` for enabled agents and software environments.
 Use `download_urls: ["https://…"]` to stage public web files in the fresh sandbox's
 `/workspace/inputs/` before execution while keeping sandbox internet disabled.
 See the agent reference for input limits, saved hashes and the repeatable CLI flag.
+Use `source_run_ids: ["RUN_ID"]` to attach saved outputs from your finished Wagon
+runs to a new fresh agent, for checking, grading or follow-up work. Use run IDs,
+not batch IDs; the agent reference explains the attached layout and limits.
 Codex uses OpenAI models; Claude Code uses Claude models; Terminus-2 uses the
 Chat Completions gateway. Model effort controls depend on both model and agent.
 Record CPU, RAM, disk, setup/run/model/command/cleanup timeouts, model effort,
