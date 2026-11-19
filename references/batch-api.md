@@ -1,7 +1,9 @@
 # Wagon batch API
 
 Base: `https://oxen.lemma.farm/api/v1/batch`. Authenticate every call with
-`CF-Access-Client-Id` and `CF-Access-Client-Secret`. All JSON mutations use
+`CF-Access-Client-Id` and `CF-Access-Client-Secret`. Scripted clients should also
+set `User-Agent: oxen-skill/1.0` (the default Python-urllib agent was rejected by
+the edge). All JSON mutations use
 `Content-Type: application/json`; raw input upload uses `application/octet-stream`.
 
 ## Create, upload, validate, submit
@@ -88,7 +90,7 @@ A status response includes:
 - `created_at`, `submitted_at`, `expected_completed_at`, `completed_at`, `updated_at`.
 - `total`, `invalid`, `upload_bytes`, `validated_bytes`, `error`.
 - `counts`: all request states, plus aggregate input/output token counts.
-- `provider_limit`, `estimate_note`, `snapshots`, `urls`.
+- `is_complete`, `provider_limit`, `estimate_note`, `snapshots`, `urls`.
 
 Request metadata includes `id`, `ordinal`, optional `custom_id`, `model`, `provider`,
 `endpoint`, `state`, `submitted_at`, `started_at`, `expected_completed_at`,

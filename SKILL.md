@@ -12,6 +12,9 @@ Send both headers on every API request, including WebSocket upgrades:
 - `CF-Access-Client-Id`: read from `CF_ACCESS_CLIENT_ID`.
 - `CF-Access-Client-Secret`: read from `CF_ACCESS_CLIENT_SECRET`.
 
+For scripted clients set `User-Agent: oxen-skill/1.0`; the edge rejected the
+default Python-urllib user agent during validation. The included helper sets it.
+
 Read credentials from the user's environment or secret store. Do not print them,
 commit them, put them in URLs, or include them in result archives. No provider
 API key is needed. Some SDKs require a placeholder `api_key`; the Cloudflare
